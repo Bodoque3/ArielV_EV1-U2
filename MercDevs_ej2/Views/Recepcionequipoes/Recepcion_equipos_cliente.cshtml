@@ -1,0 +1,109 @@
+﻿@model IEnumerable<MercDevs_ej2.Models.Recepcionequipo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body style="align-content:center">
+    @if (Model != null){
+    <table class="table">
+        <thead td style="white-space: nowrap;">
+            <tr>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    TipoPc
+                </th>
+                <th>
+                    Accesorio
+                </th>
+                <th>
+                    MarcaPc
+                </th>
+                <th>
+                   ModeloPc
+                </th>
+                <th>
+                    N° Serie
+                </th>
+                <th>
+                    Cap Ram
+                </th>
+                <th>
+                    Tipo almacenamiento
+                </th>
+                <th>
+                    Cap Almacenamiento
+                </th>
+                <th>
+                    Tipo Gpu
+                </th>
+                <th>
+                    Grafico
+                </th>
+                <th>
+                  servicio
+                </th>
+                <th>
+                    Estado
+                </th>
+            </tr>
+        </thead>
+        <tbody style="text-align">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="white-space: nowrap;">
+                         @item.Fecha
+                    </td>
+                    <td>
+                        @item.TipoPc
+                    </td>
+                    <td>
+                        @item.Accesorio
+                    </td>
+                    <td>
+                        @item.MarcaPc
+                    </td>
+                    <td>
+                        @item.ModeloPc
+                    </td>
+                    <td>
+                        @item.Nserie
+                    </td>
+                    <td>
+                        @item.CapacidadRam
+                    </td>
+                    <td>
+                        @item.TipoAlmacenamiento
+                    </td>
+                    <td>
+                        @item.CapacidadAlmacenamiento
+                    </td>
+                    <td>
+                        @item.TipoGpu
+                    </td>
+                    <td>
+                        @item.Grafico
+                    </td>
+                       <td>
+                        @item.IdServicioNavigation?.Nombre
+                    </td>
+                    <td>
+                       @item.Estado
+                    </td>
+                    <td>
+                            <!-- Formulario con el botón -->
+                        <form asp-action="FinalizarRecepcion" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-success">Recepción del Equipo</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+                
+        </tbody>
+    </table>
+    }
+</body>

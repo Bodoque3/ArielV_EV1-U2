@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MercDevs_ej2.Models.Recepcionequipo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (Model != null)
+{
+<h1>Cliente:  </h1>
+<body style="align-content:center">
+    <table class="table">
+        <thead td style="white-space: nowrap;">
+            <tr>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    TipoPc
+                </th>
+                <th>
+                    Accesorio
+                </th>
+                <th>
+                    MarcaPc
+                </th>
+                <th>
+                   ModeloPc
+                </th>
+                <th>
+                  servicio
+                </th>
+                <th>
+                    Estado
+                </th>
+            </tr>
+        </thead>
+        <tbody style="text-align">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="white-space: nowrap;">
+                         @item.Fecha
+                    </td>
+                    <td>
+                        @item.TipoPc
+                    </td>
+                    <td>
+                        @item.Accesorio
+                    </td>
+                    <td>
+                        @item.MarcaPc
+                    </td>
+                       <td>
+                        @item.IdServicioNavigation?.Nombre
+                    </td>
+                    <td>
+                       @item.Estado
+                    </td>
+                    <td>
+                            <!-- Formulario con el botón -->
+                        <form asp-action="FinalizarRecepcion" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-success">Recepción del Equipo</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+                
+        </tbody>
+    </table>
+   
+</body>
+}
